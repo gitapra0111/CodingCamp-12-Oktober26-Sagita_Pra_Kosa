@@ -16,8 +16,11 @@
   <!-- Apply saved theme before render to avoid flash -->
   <script>
     (function () {
-      const saved = localStorage.getItem('dashboardTheme');
-      if (saved === 'dark') document.documentElement.classList.add('dark');
+      // Value is stored via JSON.stringify, so parse it before comparing
+      try {
+        const saved = JSON.parse(localStorage.getItem('dashboardTheme'));
+        if (saved === 'dark') document.documentElement.classList.add('dark');
+      } catch (e) {}
     })();
   </script>
 </head>

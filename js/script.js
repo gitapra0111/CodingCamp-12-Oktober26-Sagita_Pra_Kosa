@@ -77,7 +77,8 @@ function applyTheme(theme) {
 
 /** Toggle between light and dark */
 function toggleTheme() {
-  const current = localStorage.getItem(LS_THEME) || 'light';
+  // Use lsGet so the value is properly JSON-parsed (no extra quotes)
+  const current = lsGet(LS_THEME, 'light');
   applyTheme(current === 'dark' ? 'light' : 'dark');
 }
 
